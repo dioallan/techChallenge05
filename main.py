@@ -3,6 +3,7 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from sklearn.preprocessing import MinMaxScaler
 import yfinance as yf
+import uvicorn
 
 app = FastAPI()
 
@@ -35,3 +36,8 @@ def predict():
     return {
         "predicted_next_close": float(predicted_price[0][0])
     }
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
