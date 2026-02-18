@@ -1,0 +1,15 @@
+name: Monitoramento API PETR4
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # roda a cada 10 minutos
+  workflow_dispatch:         # permite rodar manualmente
+
+jobs:
+  check-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checar API
+        run: |
+          curl -f https://SEU-ENDPOINT.onrender.com/docs || exit 1
