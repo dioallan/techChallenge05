@@ -7,6 +7,8 @@ from tensorflow.keras.models import load_model
 from fastapi import HTTPException
 import time
 import logging
+import zipfile
+from fastapi.responses import FileResponse
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -103,3 +105,37 @@ def prever(dados: DadosEntrada):
     return {
         "previsao_fechamento": float(previsao_real[0][0])
     }
+
+
+OUTPUT_DIR = "previsoes"
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+ZIP_NAME = "todas_previsoes.zip"
+
+
+@app.get("/baixar",
+         summary="Baixar todos os relatórios CSV",
+         description="Gera dinamicamente um arquivo ZIP contendo todos os arquivos CSV presentes na pasta de previsões.",
+         response_description="Arquivo ZIP contendo todos os relatórios gerados"
+         )
+def baixar_todos():
+
+    arquivos_csv = [
+        f for f in os.listdir(OUTPUT_DIR)
+        if f.endswith(".csv")
+    ]
+
+    if not arquivos_csv:
+        raise HTTPException(status_code=404, detail="Nenhum CSV encontrado")
+
+    zip_path = os.path.join(OUTPUT_DIR, ZIP_NAME)
+
+    with zipfile.ZipFile(zip_path, "w") as zipf:
+        for arquivo in arquivos_csv:
+            caminho_completo = os.path.join(OUTPUT_DIR, arquivo)
+            zipf.write(caminho_completo, arcname=arquivo)
+
+    return FileResponse(
+        path=zip_path,
+        media_type="application/zip",
+        filename=ZIP_NAME
+    )
