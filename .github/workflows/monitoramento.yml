@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Checar API
         run: |
-          curl -f https://SEU-ENDPOINT.onrender.com/docs || exit 1
+          curl -f https://techchallenge04.onrender.com/docs || exit 1
