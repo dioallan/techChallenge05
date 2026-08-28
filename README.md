@@ -1,10 +1,10 @@
-# Previsão de Preço de Ações PETR4 com LSTM
+# Previsão de Preço de Ações ITUB4 com LSTM
 
-Projeto de Deep Learning utilizando LSTM (Long Short-Term Memory) para previsão do preço de fechamento da ação PETR4.
+Projeto de Deep Learning utilizando LSTM (Long Short-Term Memory) para previsão do preço de fechamento da ação ITUB4.
 
 ## Objetivo
 
-Desenvolver um modelo preditivo baseado em redes neurais recorrentes (LSTM) capaz de prever o preço futuro da ação PETR4 com base em séries temporais históricas.
+Desenvolver um modelo preditivo baseado em redes neurais recorrentes (LSTM) capaz de prever o preço futuro da ação ITUB4 com base em séries temporais históricas.
 
 ---
 
@@ -45,7 +45,7 @@ Desenvolver um modelo preditivo baseado em redes neurais recorrentes (LSTM) capa
 lstm-prediction/
 │
 ├── app.py
-├── modelo_lstm_petr4.h5
+├── modelo_lstm_itub4.h5
 ├── scaler.pkl
 ├── requirements.txt
 ├── Dockerfile

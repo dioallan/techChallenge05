@@ -1,4 +1,4 @@
-name: Monitoramento API PETR4
+name: Monitoramento API ITUB4
 
 on:
   schedule:

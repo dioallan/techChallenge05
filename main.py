@@ -8,19 +8,19 @@ import uvicorn
 app = FastAPI()
 
 # Carregar modelo
-model = load_model("models/petr4_lstm.keras")
+model = load_model("models/itub4_lstm.keras")
 
 
 @app.get("/")
 def home():
-    return {"message": "API LSTM PETR4 rodando 🚀"}
+    return {"message": "API LSTM ITUB4 rodando 🚀"}
 
 
 @app.get("/predict")
 def predict():
 
     # Baixar últimos dados
-    df = yf.download("PETR4.SA", period="90d")
+    df = yf.download("ITUB4.SA", period="90d")
     data = df[['Close']].values
 
     scaler = MinMaxScaler(feature_range=(0, 1))

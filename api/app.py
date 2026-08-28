@@ -17,15 +17,15 @@ logger = logging.getLogger(__name__)
 # Inicialização da API
 # ----------------------------
 app = FastAPI(
-    title="API LSTM PETR4",
-    description="API para prever o preço de fechamento de PETR4 usando modelo LSTM",
+    title="API LSTM ITUB4",
+    description="API para prever o preço de fechamento de ITUB4 usando modelo LSTM",
     version="1.0.0"
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-modelo_path = os.path.join(BASE_DIR, "modelo_lstm_petr4.h5")
-scaler_path = os.path.join(BASE_DIR, "scaler_petr4.save")
+modelo_path = os.path.join(BASE_DIR, "..", "models", "itub4_lstm.keras")
+scaler_path = os.path.join(BASE_DIR, "..", "models", "scaler_itub4.save")
 
 # Carregar modelo e scaler
 modelo = load_model(modelo_path)
@@ -77,7 +77,7 @@ async def add_process_time_header(request, call_next):
 
 @app.get("/", summary="Verificar status da API", description="Retorna mensagem de que a API está ativa")
 def home():
-    return {"mensagem": "API LSTM PETR4 ativa"}
+    return {"mensagem": "API LSTM ITUB4 ativa"}
 
 
 @app.post(

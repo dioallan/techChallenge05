@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.git/
+.vscode/
+.ipynb_checkpoints/
+.pytest_cache/
+*.log
+./notebook
+./previsoes
+./model
+./train_petr4_backup.py

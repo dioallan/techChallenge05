@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 
 # --- CONFIGURAÇÃO ---
-SIMBOLOS = ["PETR4.SA", "VALE3.SA"]  # Ações que você quer prever
+SIMBOLOS = ["ITUB4.SA", "VALE3.SA"]  # Ações que você quer prever
 NUM_DIAS = 60
 URL_API = "https://techchallenge04.onrender.com/prever"  # Endpoint da sua API
 OUTPUT_DIR = "previsoes"                   # Pasta onde os CSVs serão salvos
